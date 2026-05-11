@@ -363,9 +363,20 @@ opacity: 1;
 
 function abrirMenu() {
 
-let menu = document.getElementById("menu-lateral");
+let menu =
+document.getElementById("menu-lateral");
 
 menu.classList.toggle("abierto");
+
+}
+
+function cerrarMenu() {
+
+let menu =
+document.getElementById("menu-lateral");
+
+menu.classList.remove("abierto");
+
 
 }
 
@@ -384,13 +395,21 @@ menu.classList.toggle("abierto");
 
 <div id="menu-lateral" class="menu-lateral">
 
-<a href="#inicio">Inicio</a>
+<a href="#inicio" onclick="cerrarMenu()">
+Inicio
+</a>
 
-<a href="#quienes">Quiénes somos</a>
+<a href="#quienes" onclick="cerrarMenu()">
+Quiénes somos
+</a>
 
-<a href="#aventuras">Aventuras</a>
+<a href="#aventuras" onclick="cerrarMenu()">
+Aventuras
+</a>
 
-<a href="#contacto">Contacto</a>
+<a href="#contacto" onclick="cerrarMenu()">
+Contactoç
+</a>
 
 </div>
 
@@ -504,7 +523,9 @@ combinando deporte, naturaleza y descubrimiento.
 
 <h2>CONTACTO</h2>
 
-<form action="https://formsubmit.co/aventurasencadapaso@gmail.com" method="POST">
+<form
+action="https://formsubmit.co/aventurasencadapaso@gmail.com"
+method="POST">
 
 <input
 type="text"
@@ -695,6 +716,144 @@ activar.onclick = () => {
     }
 
 };
+
+
+</script>
+<!-- CHAT SIMPLE -->
+
+<div id="chat-btn">💬</div>
+
+<div id="chat-box">
+
+<div id="chat-mensajes"></div>
+
+<input id="chat-input" type="text">
+
+<button onclick="responderChat()">
+Enviar
+</button>
+
+</div>
+
+<style>
+
+#chat-btn {
+
+position: fixed;
+bottom: 20px;
+right: 20px;
+
+width: 60px;
+height: 60px;
+
+background: green;
+color: white;
+
+border-radius: 50%;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 30px;
+
+cursor: pointer;
+
+z-index: 999999;
+
+}
+
+#chat-box {
+
+position: fixed;
+
+bottom: 90px;
+right: 20px;
+
+width: 300px;
+
+background: white;
+
+border: 2px solid black;
+
+padding: 10px;
+
+display: none;
+
+z-index: 999999;
+
+}
+
+#chat-mensajes {
+
+height: 200px;
+
+overflow-y: auto;
+
+margin-bottom: 10px;
+
+}
+
+
+
+</style>
+
+<script>
+
+const chatBtn =
+document.getElementById("chat-btn");
+
+const chatBox =
+document.getElementById("chat-box");
+
+chatBtn.onclick = () => {
+
+if(chatBox.style.display == "block") {
+
+chatBox.style.display = "none";
+
+} else {
+
+chatBox.style.display = "block";
+
+}
+
+};
+
+function responderChat() {
+
+let input =
+document.getElementById("chat-input");
+
+let texto = input.value;
+
+let mensajes =
+document.getElementById("chat-mensajes");
+
+mensajes.innerHTML +=
+"<p><b>Tú:</b> " + texto + "</p>";
+
+let respuesta = "No entiendo";
+
+if(texto.includes("hola")) {
+
+respuesta = "Hola aventurero";
+
+}
+
+if(texto.includes("senderismo")) {
+
+respuesta = "Tenemos rutas increíbles";
+
+}
+
+mensajes.innerHTML +=
+"<p><b>Bot:</b> " + respuesta + "</p>";
+
+input.value = "";
+
+}
+
 </script>
 
 </body>
